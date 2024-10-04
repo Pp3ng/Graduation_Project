@@ -1,123 +1,101 @@
 # Progress Report
 
-**Date:** October 4, 2024
+**Date:** October 20, 2023
 
-## 1. Project Setup
+## Today's Achievements
 
-### Frontend (Windows)
+### Frontend Development
 
-- **Created a React project:**
+- **File:** `App.js`
+  - Developed the main application component using React.
+  - Implemented user interface with MUI (Material-UI) for a modern look.
+  - Added functionality for user login and registration.
+  - Integrated Axios for making HTTP requests to the backend.
+  - Applied CSS for additional styling and animations to enhance user experience.
 
-  - Used `create-react-app` to initialize the frontend environment.
-  - Commands executed:
-    ```bash
-    npx create-react-app frontend
-    cd frontend
-    ```
+#### Commands Used
 
-- **Installed Axios:**
-  - For making HTTP requests to the backend.
-  - Command executed:
-    ```bash
-    npm install axios
-    ```
+- **Create React App:**
 
-### Backend (WSL)
+  ```bash
+  npx create-react-app frontend
+  ```
 
-- **WSL Setup:**
+- **Install MUI:**
 
-  - Ensured WSL was installed and configured with Ubuntu.
+  ```bash
+  npm install  react-scripts @mui/material @emotion/react @emotion/styled
+  ```
 
-- **Installed necessary tools:**
+- **Start Development Server:**
+  ```bash
+  npm start
+  ```
 
-  - Installed C++ build tools and vcpkg for package management.
-  - Commands executed:
-    ```bash
-    sudo apt update
-    sudo apt install build-essential
-    git clone https://github.com/microsoft/vcpkg.git
-    ./vcpkg/bootstrap-vcpkg.sh
-    ```
+### Backend Development
 
-- **Installed libraries:**
-  - Used vcpkg to install Crow, nlohmann-json, bcrypt-cpp, and jwt-cpp.
-  - Command executed:
-    ```bash
-    ./vcpkg/vcpkg install crow nlohmann-json bcrypt-cpp jwt-cpp
-    ```
+- **File:** `main.cpp`
+  - Set up the backend server using C++.
+  - Implemented RESTful API endpoints for user registration and login.
+  - Utilized `libxcrypt` for password hashing and verification.
+  - Integrated `nlohmann/json` for JSON parsing and serialization.
+  - Successfully compiled the backend application using `g++` with necessary libraries.
 
-## 2. Frontend Development
+#### Commands Used
 
-- **Implemented User Interface:**
+- **Clone and Build Crow from Source:**
 
-  - Developed UI components for user registration and login using React.
-  - Managed state with React hooks (`useState`).
+  ```bash
+  git clone https://github.com/CrowCpp/Crow.git
+  cd Crow
+  mkdir build
+  cd build
+  cmake ..
+  make
+  sudo make install
+  ```
 
-- **HTTP Requests:**
+- **Install nlohmann/json:**
 
-  - Integrated Axios for communication with the backend.
+  - Directly included as a header-only library, no installation command needed.
 
-- **Key File:**
-  - `App.jsx`: Handles user input, registration, and login logic.
+- **Compile Backend Application:**
+  ```bash
+  g++ main.cpp -o myapp -I. -lcrypt -lpthread -lstdc++fs
+  ./myapp
+  ```
+  Then I clicked in frontend folder and run the following command to start the frontend server:
 
-## 3. Backend Development
+```bash
+ npm start
+```
 
-- **Crow Framework Setup:**
+The frontend server started successfully and I was able to see INFO in the terminal that the backend server is running.
 
-  - Configured Crow to handle HTTP requests and responses.
-  - Created API endpoints for user registration and login.
+## Challenges and Solutions
 
-- **JSON Handling:**
+- **Dependency Management:**
 
-  - Used `nlohmann/json` for parsing and generating JSON data.
+  - Encountered issues with missing dependencies (`crow.h` and `nlohmann/json.hpp`).
+  - Resolved by manually cloning and building Crow from source.
+  - Adjusted include paths and library links to ensure successful compilation.
 
-- **Password Management:**
+- **Environment Setup:**
+  - Configured necessary libraries manually without using `vcpkg`.
+  - Ensured all dependencies were correctly linked during compilation.
 
-  - Integrated `BCrypt` for secure password hashing.
+## Next Steps
 
-- **JWT Authentication:**
+- **Testing and Debugging:**
 
-  - Used `jwt-cpp` to generate and verify JSON Web Tokens for user sessions.
+  - Conduct thorough testing of both frontend and backend functionalities.
+  - Debug any issues that arise during integration testing.
 
-- **Key File:**
-  - `main.cpp`: Contains the main logic for handling API requests and responses.
+- **Feature Expansion:**
 
-## 4. Frontend and Backend Integration
+  - Plan to add more features to the application, such as file upload and download for the cloud storage functionality.
 
-- **API Path Consistency:**
+- **Deployment Preparation:**
+  - Begin preparing the application for deployment, considering both frontend and backend requirements.
 
-  - Ensured that the API paths (`/api/register` and `/api/login`) are consistent between frontend and backend.
-
-- **Data Format Alignment:**
-
-  - Verified that the JSON data format used in requests and responses is correctly handled on both sides.
-
-- **Testing:**
-  - Conducted tests to ensure that registration and login functionalities work as expected.
-
-## 5. Problem Solving
-
-- **Data Format Issues:**
-
-  - Resolved mismatches in JSON data formats between frontend and backend.
-
-- **API Path Adjustments:**
-  - Made necessary adjustments to API paths to ensure proper communication.
-
-## 6. Deployment Plan
-
-- **Frontend Build:**
-
-  - Build the production version of the frontend using:
-    ```bash
-    npm run build
-    ```
-
-- **Backend Deployment:**
-
-  - Compile the backend service and prepare it for deployment on the server.
-
-- **Server Configuration:**
-  - Plan to configure Nginx or Apache to host the frontend static files and set up reverse proxy for the backend service.
-
-**Summary:** Today's efforts were focused on setting up the project environment, developing basic user authentication features, and ensuring seamless integration between the frontend and backend. The next phase will involve expanding the application's capabilities and preparing for deployment.
+**Summary:** Today's work focused on setting up the core functionalities of both the frontend and backend. The integration of MUI and C++ backend has provided a solid foundation for further development. The next phase will involve testing and expanding the application's capabilities.
