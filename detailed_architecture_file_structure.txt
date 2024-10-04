@@ -1,0 +1,87 @@
+Project Root
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   │   ├── UserInterface.jsx
+│   │   │   ├── FileUpload.jsx
+│   │   │   └── FileDownload.jsx
+│   │   ├── api
+│   │   │   ├── auth.js
+│   │   │   └── file.js
+│   │   └── App.jsx
+│   ├── public
+│   │   └── index.html
+│   └── styles
+│       └── main.css
+│   └── package.json
+├── nginx
+│   ├── nginx.conf
+│   └── ssl
+│       ├── server.crt
+│       └── server.key
+├── backend
+│   ├── src
+│   │   ├── auth
+│   │   │   ├── AuthAPI.cpp
+│   │   │   ├── OAuth.cpp
+│   │   │   └── JWT.cpp
+│   │   ├── user
+│   │   │   ├── UserManager.cpp
+│   │   │   └── UserRoles.cpp
+│   │   ├── file
+│   │   │   ├── FileManager.cpp
+│   │   │   ├── StorageManager.cpp
+│   │   │   └── FileSystemAPI.cpp
+│   │   ├── db
+│   │   │   ├── MySQLConnector.cpp
+│   │   │   └── RedisConnector.cpp
+│   │   ├── handlers
+│   │   │   ├── FileUploadHandler.cpp
+│   │   │   └── FileDownloadHandler.cpp
+│   │   ├── services
+│   │   │   ├── UserService.cpp
+│   │   │   └── FileService.cpp
+│   │   ├── models
+│   │   │   ├── UserModel.cpp
+│   │   │   └── FileModel.cpp
+│   │   └── main.cpp
+│   └── include
+│       ├── auth.h
+│       ├── user.h
+│       ├── file.h
+│       ├── db.h
+│       ├── service.h
+│       └── model.h
+│   └── CMakeLists.txt
+├── db
+│   ├── migrations
+│   │   ├── create_users_table.sql
+│   │   ├── create_files_table.sql
+│   │   ├── create_roles_table.sql
+│   │   └── create_access_control_table.sql
+│   └── mysql_config.cnf
+├── redis
+│   └── redis.conf
+├── config
+│   ├── nginx_config.conf
+│   ├── backend_config.conf
+│   └── frontend_config.json
+├── users
+│   ├── authentication
+│   │   ├── JWTManager.cpp
+│   │   └── OAuthManager.cpp
+│   ├── authorization
+│   │   └── AccessControl.cpp
+│   └── profile
+│       └── UserProfileManager.cpp
+├── file_storage
+│   ├── cloud
+│   │   └── CloudStorageAPI.cpp
+│   ├── local
+│   │   └── LocalFileSystem.cpp
+│   └── manager
+│       ├── FileUploadManager.cpp
+│       └── FileDownloadManager.cpp
+└── cache
+    └── redis
+        └── RedisCacheManager.cpp

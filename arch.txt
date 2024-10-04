@@ -1,0 +1,49 @@
++-------------------+       +-------------------+       +-------------------+
+|                   |       |                   |       |                   |
+|     Frontend      | <---->|       Nginx       | <---->|     Backend       |
+| (HTML/CSS/JS)     |       | (Web Server &     |       |   (C++ REST API)  |
+|                   |       |  Reverse Proxy)   |       |                   |
++-------------------+       +-------------------+       +-------------------+
+        |                           |                           |
+        |                           |                           |
+        v                           v                           v
++-------------------+       +-------------------+       +-------------------+
+|                   |       |                   |       |                   |
+|  User Interface   |       |  SSL/TLS          |       |  process Logic    |
+|  (React/Vue)      |       |  Load Balancing   |       |  (File Handling,  |
+|                   |       |  Caching Static   |       |   User Management)|
++-------------------+       |  Content          |       +-------------------+
+        |                   +-------------------+               |
+        |                           |                           |
+        v                           v                           v
++-------------------+       +-------------------+       +-------------------+
+|                   |       |                   |       |                   |
+|  API Requests     |       |  Authentication   |       |  Database Access  |
+| (Fetch/AJAX)      |       |   Service         |       |   (MySQL)         |
+|                   |       |  (OAuth/JWT)      |       |   (MySQL C++ API) |
++-------------------+       +-------------------+       +-------------------+
+        |                           |                           |
+        v                           v                           v
++-------------------+       +-------------------+       +-------------------+
+|                   |       |                   |       |                   |
+|   File Storage    |       |  Cache Access     |       |     Users         |
+|  (Local/Cloud)    |       |   (Redis)         |       |-------------------|
+|                   |       |  (Redis C++ API)  |       | id (PK)           |
++-------------------+       +-------------------+       | username          |
+        |                                               | password          |
+        v                                               | is_deleted        |
++-------------------+                                   | deleted_at        |
+|                   |                                   +-------------------+
+|  Storage Manager  |                                           |
+|  (C++ Module)     |                                           v
+|                   |                                   +-------------------+
++-------------------+                                   |                   |
+        |                                               |     Files         |
+        v                                               |-------------------|
++-------------------+                                   | id (PK)           |
+|                   |                                   | user_id (FK)      |
+|  File System API  |                                   | filename          |
+|  (POSIX/Cloud SDK)|                                   | filepath          |
+|                   |                                   | is_deleted        |
++-------------------+                                   | deleted_at        |
+                                                        +-------------------+
